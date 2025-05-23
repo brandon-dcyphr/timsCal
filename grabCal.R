@@ -59,6 +59,58 @@ list2env(
   
   rownames(mainDF) <- NULL
   
+  selectPermnames <- c("LastCalibrationDate",
+                       "Calibration_LastCalibrationDate",
+                       "Calibration_LastCalibrationCurrentMass.entry_double",
+                       "Calibration_LastCalibrationMassError.entry_double",
+                       "Calibration_LastCalibrationMassIntensity.entry_double",
+                       "Calibration_ScanBegin",
+                       "Calibration_ScanEnd",
+                       "Calibration_Score",
+                       "Calibration_StdDev",
+                       "Calibration_StdDevInPPM",
+                       "IMS_Calibration_LastCalibrationDate",
+                       "IMS_Calibration_LastCalibrationReferenceMass.entry_double",
+                       "IMS_Calibration_LastCalibrationMobilityError.entry_double",
+                       "IMS_Calibration_LastCalibrationMassIntensity.entry_double",
+                       "IMS_Calibration_LastCalibrationReferenceMassList",
+                       "IMS_Calibration_LastCalibrationReferenceMobility.entry_double",
+                       "IMS_Calibration_LastCalibrationResultMobility.entry_double",
+                       "IMS_Calibration_Score",
+                       "IMS_Calibration_StdDev",
+                       "IMS_Calibration_MobilityStart_Save",
+                       "IMS_Calibration_MobilityEnd_Save",
+                       "Calibration_TOF_CorrectorExtractSetValue",
+                       "Calibration_TOF_CorrectorFillSetValue",
+                       "Calibration_TOF_DeceleratorSetValue",
+                       "Calibration_TOF_DetectorTofSetValue",
+                       "Calibration_TOF_ReflectorSetValue",
+                       "Calibration_TOF_FlightTubeSetValue",
+                       "Calibration_Tof2Score",
+                       "Calibration_Tof2StdDev",
+                       "Calibration_Tof2StdDevInPPM",
+                       "Calibration_Tof2CalC0",
+                       "Calibration_Tof2CalC1",
+                       "Calibration_Tof2CalC2",
+                       "Calibration_TofCalC0",
+                       "Calibration_TofCalC1",
+                       "Calibration_TofCalC2",
+                       "Calibration_Collision_GasSupply_Set",
+                       "TOF_DeviceReferenceTemp1",
+                       "TOF_DeviceReferenceTemp2")
+  
+  mainDF_filtered <- mainDF[grep(selectPermnames, mainDF$permname),]
+  
+  
+  for (entry in selectPermnames){
+    
+    
+    
+    
+  }
+  
+  
+  
   
   
   

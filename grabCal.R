@@ -33,16 +33,31 @@ list2env(
   methodList <- xmlToList(childrenList[["root"]][["instrument"]][["qtofimpactemacq"]])
   methodDetails <- methodList[37]
   methodDetailsDF <- as.data.frame(t(as.data.frame(methodDetails)))
-                                   
-  for (k in 1:length(methodDetails[[1]])){
-    temp2 <- setNames(methodDetails[[1]][20], methodDetails[[1]][20]$para_vec_double$.attrs[[1]])
-    temp2 <- as.data.frame(t(as.data.frame(temp2)))
-    
-    # methodDetails[[1]][k]
-    
-    
-  }
   
+  mainDF <- data.frame()
+  
+  for (k in 1:length(methodDetails[[1]])){
+    temp2 <- setNames(methodDetails[[1]][k], methodDetails[[1]][k]$para_vec_double$.attrs[[1]])
+    temp2 <- as.data.frame(t(as.data.frame(temp2)))
+    if (ncol(mainDF) == 0){
+      mainDF <- temp2
+    }
+    
+    if (ncol(mainDF) > ncol(temp2)){
+      temp2 <- cbind(permname=rownames(temp2), temp2)
+      if (colnames(temp2)[2] != "polarity"){
+        mainDF <- rbind(mainDF, temp2)
+      }
+    }
+    
+    if (ncol(mainDF) == ncol(temp2)){
+      if (colnames(temp2)[2] != "polarity"){
+      mainDF <- rbind(mainDF, temp2)
+      }
+      }
+    }
+  
+  rownames(mainDF) <- NULL
   
   
   

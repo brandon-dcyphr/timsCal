@@ -20,8 +20,8 @@ calPaths <- paste0("M:/2025/Brandon/timsTOF/InstrumentHistory/",calmeths)
 for (i in 1:length(calmeths)){
   
 list2env(
-  lapply(setNames(paste0(calPaths[i],"/microTOFQImpacTemAcquisition.method"), calmeths[i]), 
-         xml2::read_xml), envir = .GlobalEnv)
+  lapply(setNames(paste0(calPaths[i],"/microTOFQImpacTemAcquisition.method"), calmeths[i]),
+  xml2::read_xml), envir = .GlobalEnv)
   
   temp <- get(calmeths[i]) 
   
@@ -64,8 +64,6 @@ list2env(
                        "Calibration_LastCalibrationCurrentMass.entry_double",
                        "Calibration_LastCalibrationMassError.entry_double",
                        "Calibration_LastCalibrationMassIntensity.entry_double",
-                       "Calibration_ScanBegin",
-                       "Calibration_ScanEnd",
                        "Calibration_Score",
                        "Calibration_StdDev",
                        "Calibration_StdDevInPPM",
@@ -78,8 +76,6 @@ list2env(
                        "IMS_Calibration_LastCalibrationResultMobility.entry_double",
                        "IMS_Calibration_Score",
                        "IMS_Calibration_StdDev",
-                       "IMS_Calibration_MobilityStart_Save",
-                       "IMS_Calibration_MobilityEnd_Save",
                        "Calibration_TOF_CorrectorExtractSetValue",
                        "Calibration_TOF_CorrectorFillSetValue",
                        "Calibration_TOF_DeceleratorSetValue",

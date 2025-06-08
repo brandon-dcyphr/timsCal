@@ -16,7 +16,7 @@ pd.options.mode.chained_assignment = None  # default='warn'
 import sqlite3
 import pandas as pd
 # Import data
-con = sqlite3.connect("C:/Data_analysis/timsQC/history.sqlite")
+con = sqlite3.connect("/mnt/tofInstrument/history.sqlite")
 cur = con.cursor()
 data = pd.read_sql_query(f"SELECT * FROM InstrumentParameterHistory", con)
 
@@ -97,14 +97,14 @@ def parse_xml_iso_8859_1(filename):
         return None
 
 # Example usage:
-xml_file = "../new_microTOFQImpacTemAcquisition.method"  # Replace with your file path
-tree_element = parse_xml_iso_8859_1(xml_file)
-root_element = tree_element.getroot()
+#xml_file = "../new_microTOFQImpacTemAcquisition.method"  # Replace with your file path
+#tree_element = parse_xml_iso_8859_1(xml_file)
+#root_element = tree_element.getroot()
 
 # %%
 # Imports from .method file
 
-target_directory = "./InstrumentHistory"  # Replace with your directory path
+target_directory = "/mnt/tofInstrument/"  # Replace with your directory path
 target_extension = ".method"  # Replace with your desired file extension
 methList = get_files_one_level_deep(target_directory, target_extension)
 
@@ -165,7 +165,7 @@ for i in methList:
     df_CalVals=pd.DataFrame(CalVals)
     # write raw file 
     filename=i.replace("../", "")
-    df_CalVals.to_csv(f'C:/Data_analysis/timsQC/timsCal/{filename}.csv', header=None, index=None, sep=',', mode='w')
+#    df_CalVals.to_csv(f'./backup/{filename}.csv', header=None, index=None, sep=',', mode='w')
         
 # Separation
 # MassCal
@@ -444,6 +444,4 @@ def update_CalGraph(plot_type):
         calOut=calplot(ddf2, x='Date', y="relative_deviation",  years_title=True, dark_theme=False, showscale = True)
     return calOut
 
-app.run(debug=True)  # Turn off reloader if inside Jupyter
-
-
+app.run(debug=True, host="137.158.163.205", port=8050)

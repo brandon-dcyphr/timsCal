@@ -111,6 +111,7 @@ methList = get_files_one_level_deep(target_directory, target_extension)
 massCalMaster=pd.DataFrame()
 massCalMaster_wide=pd.DataFrame()
 mobilityCalMaster=pd.DataFrame()
+tofCalMaster=pd.DataFrame()
 for i in methList:
     # print(i)
     CalLists = []
@@ -232,6 +233,7 @@ for i in methList:
 
     massCalMaster=pd.concat([massCalMaster, massCalFrame_df])
     mobilityCalMaster=pd.concat([mobilityCalMaster, mobilityCalFrame_df])
+    tofCalMaster=pd.concat([tofCalMaster, tofCal_df])
 
 
 # %%
@@ -393,7 +395,7 @@ def update_graph(plot_type, yaxis_type):
     fig.update_layout(xaxis_range=['2023-06-01',today.strftime("%Y-%m-%d")])
     fig.update_yaxes(title='Intensity',
                     type='linear' if yaxis_type == 'Linear' else 'log')
-    # fig.update_layout(yaxis_tickformat=".3e") # Formats to scientific notation with 2 decimal places
+    fig.update_layout(yaxis_tickformat=".2e") # Formats to scientific notation with 2 decimal places
     fig.update_layout(
         xaxis=dict(
             rangeselector=dict(
